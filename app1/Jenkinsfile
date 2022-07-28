@@ -1,0 +1,14 @@
+pipeline{
+    agent{
+        label "PHP"
+    }
+    stages{
+        stage("Deploy app1"){
+            steps{
+                sh '''
+                    kubectl namespace bs-app
+                    kubectl create -f ./deploy/deploy.yaml
+            }
+        }
+    }
+}
